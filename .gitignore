@@ -1,0 +1,11 @@
+# Godot-specific
+.import/
+export.cfg
+export_presets.cfg
+
+# Editor-specific (Godot 4)
+.godot/
+
+# OS-specific
+.DS_Store
+Thumbs.db
