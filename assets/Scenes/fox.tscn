@@ -1,32 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://3bvltsarg7cd"]
+[gd_scene load_steps=13 format=3 uid="uid://3bvltsarg7cd"]
 
 [ext_resource type="Texture2D" uid="uid://b5aitd5rx2dd1" path="res://assets/Scripts/player.png" id="1_mxjoo"]
 [ext_resource type="Script" uid="uid://cpvq5f0hmewm4" path="res://assets/Scripts/fox_controller.gd" id="2_kym8s"]
-
-[sub_resource type="Animation" id="Animation_kym8s"]
-resource_name = "idle_anim"
-length = 1.0
-loop_mode = 1
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Agent2DPlayer/Sprite2D:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(0, 0, 32, 32), Rect2(33, 0, 32, 32), Rect2(66, 0, 32, 32), Rect2(99, 0, 32, 32)]
-}
+[ext_resource type="Script" uid="uid://bvqfri5pyuhhb" path="res://assets/Scripts/fox_anime.gd" id="2_s0fyw"]
 
 [sub_resource type="Animation" id="Animation_s0fyw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Agent2DPlayer/Sprite2D:region_rect")
+tracks/0/path = NodePath("Fox_Anime/Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,6 +19,40 @@ tracks/0/keys = {
 "values": [Rect2(0, 0, 32, 32)]
 }
 
+[sub_resource type="Animation" id="Animation_vnseo"]
+resource_name = "duck_anim"
+length = 0.500002
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fox_Anime/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 96, 32, 32), Rect2(33, 96, 32, 32), Rect2(66, 96, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_kym8s"]
+resource_name = "idle_anim"
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fox_Anime/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32), Rect2(33, 0, 32, 32), Rect2(66, 0, 32, 32), Rect2(99, 0, 32, 32)]
+}
+
 [sub_resource type="Animation" id="Animation_r3nhb"]
 resource_name = "run_anim"
 loop_mode = 1
@@ -43,7 +60,7 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Agent2DPlayer/Sprite2D:region_rect")
+tracks/0/path = NodePath("Fox_Anime/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,28 +70,62 @@ tracks/0/keys = {
 "values": [Rect2(0, 32, 32, 32), Rect2(33, 32, 32, 32), Rect2(66, 32, 32, 32), Rect2(95.1176, 32, 32, 32), Rect2(132, 32, 32, 32), Rect2(165, 32, 32, 32)]
 }
 
-[sub_resource type="Animation" id="Animation_vnseo"]
-resource_name = "duck_anim"
-length = 0.500002
-step = 0.0166667
+[sub_resource type="Animation" id="Animation_rcerp"]
+resource_name = "jump_anim"
+step = 0.0666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Agent2DPlayer/Sprite2D:region_rect")
+tracks/0/path = NodePath("Fox_Anime/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0, 98, 32, 32), Rect2(33, 98, 33, 32), Rect2(66, 98, 33, 32)]
+"values": [Rect2(0, 160, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_jywtx"]
+resource_name = "fall_anim"
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fox_Anime/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 160, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_77nup"]
+resource_name = "dead_anim"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fox_Anime/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(2, 128, 32, 32), Rect2(34, 128, 32, 32)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r3nhb"]
 _data = {
 &"RESET": SubResource("Animation_s0fyw"),
+&"dead_anim": SubResource("Animation_77nup"),
 &"duck_anim": SubResource("Animation_vnseo"),
+&"fall_anim": SubResource("Animation_jywtx"),
 &"idle_anim": SubResource("Animation_kym8s"),
+&"jump_anim": SubResource("Animation_rcerp"),
 &"run_anim": SubResource("Animation_r3nhb")
 }
 
@@ -91,16 +142,20 @@ jump_power = 8.0
 offset = Vector2(0, -15)
 zoom = Vector2(6, 6)
 
-[node name="Agent2DPlayer" type="Node2D" parent="."]
+[node name="Fox_Anime" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
+script = ExtResource("2_s0fyw")
+player_controller = NodePath("..")
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Agent2DPlayer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fox_Anime"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_r3nhb")
 }
-autoplay = "duck_anim"
+autoplay = "idle_anim"
 
-[node name="Sprite2D" type="Sprite2D" parent="Agent2DPlayer"]
+[node name="Sprite2D" type="Sprite2D" parent="Fox_Anime"]
 position = Vector2(1, -4)
 scale = Vector2(1.03125, 0.9375)
 texture = ExtResource("1_mxjoo")
